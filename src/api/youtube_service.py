@@ -1,5 +1,6 @@
 import pandas as pd
 
+from src.utils.file_handler import save_json, save_csv
 from src.api.youtube_client import get_youtube_client
 
 
@@ -21,6 +22,7 @@ def fetch_trending_videos(
     )
 
     response = request.execute()
+    save_json(response)
 
     videos = []
 
@@ -39,4 +41,7 @@ def fetch_trending_videos(
 
     df = pd.DataFrame(videos)
 
+    # Save the fetched data to a JSON file
+    save_json(response, prefix="trending")
+    save_csv(df)
     return df
