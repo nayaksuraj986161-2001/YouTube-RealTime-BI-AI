@@ -24,22 +24,22 @@ def transform_trending_videos(response):
 
         videos.append({
 
+            # Video Information
             "video_id": item["id"],
-
             "title": snippet["title"],
 
+            # Channel Information
+            "channel_id": snippet["channelId"],
             "channel_title": snippet["channelTitle"],
 
+            # Metadata
             "published_at": snippet["publishedAt"],
-
             "category_id": snippet["categoryId"],
-
             "duration": content.get("duration"),
 
+            # Statistics
             "view_count": int(statistics.get("viewCount", 0)),
-
             "like_count": int(statistics.get("likeCount", 0)),
-
             "comment_count": int(statistics.get("commentCount", 0))
 
         })
