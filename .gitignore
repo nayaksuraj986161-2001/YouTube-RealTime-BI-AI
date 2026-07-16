@@ -1,25 +1,50 @@
-# Virtual Environment
-venv/
-
+# ============================
 # Environment Variables
+# ============================
 .env
 
-# Python Cache
+# ============================
+# Python
+# ============================
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
 
-# Jupyter
+# ============================
+# Jupyter Notebook
+# ============================
 .ipynb_checkpoints/
 
+# ============================
 # VS Code
+# ============================
 .vscode/
 
+# ============================
 # Logs
+# ============================
 logs/
+*.log
 
-# Temporary Cache
-cache/temp/
+# ============================
+# Cache
+# ============================
+cache/api_responses/
 
-# OS Files
-.DS_Store
+# ============================
+# Generated Data
+# ============================
+database/raw/
+database/processed/
+
+# ============================
+# Operating System Files
+# ============================
 Thumbs.db
+.DS_Store
+
+# ============================
+# Python Environment
+# ============================
+venv/
+.venv/
