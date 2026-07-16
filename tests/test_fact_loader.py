@@ -1,9 +1,3 @@
-"""
-YouTube Real-Time BI AI
-=======================
-Main ETL Pipeline
-"""
-
 from src.etl.extract import extract_trending_videos
 from src.etl.transform import transform_trending_videos
 from src.etl.validate import validate_dataframe
@@ -23,32 +17,21 @@ from src.warehouse.fact_loader import (
 
 def main():
 
-    print("=" * 60)
-    print("YouTube Real-Time BI AI Pipeline")
-    print("=" * 60)
-
-    print("\nStep 1: Extracting data...")
     response = extract_trending_videos()
 
-    print("\nStep 2: Transforming data...")
     df = transform_trending_videos(response)
 
-    print("\nStep 3: Validating data...")
     df = validate_dataframe(df)
 
-    print("\nStep 4: Loading Dimensions...")
+    # Load dimensions first
     load_channels(df)
     load_categories()
     load_regions()
     load_dates(df)
 
-    print("\nStep 5: Loading Fact Tables...")
+    # Load fact table
     load_fact_videos(df)
     load_fact_video_statistics(df)
-
-    print("\n" + "=" * 60)
-    print("ETL PIPELINE COMPLETED SUCCESSFULLY")
-    print("=" * 60)
 
 
 if __name__ == "__main__":
